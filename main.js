@@ -20,14 +20,10 @@ app.on('window-all-closed', function() {
 //
 app.on('ready', function() {
 
-
-
     global.mainWindow = new BrowserWindow({width: 1200, height: 900});
-
     mainWindow.webContents.openDevTools();
 
     storage.get('bimba-tracker-user', function(error, data) {
-        console.log( data );
         if (error) throw error;
         if(! data.email ) {
             mainWindow.loadURL( loginUrl );
@@ -41,7 +37,7 @@ app.on('ready', function() {
                     }
 
                 }).catch( function ( error  ) {
-
+                    mainWindow.loadURL( loginUrl )
                 })
         }
 
