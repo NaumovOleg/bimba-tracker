@@ -29,7 +29,7 @@ app.on('ready', function() {
     storage.get('bimba-tracker-user', function(error, data) {
         console.log( data );
         if (error) throw error;
-        if( ! data.email ) {
+        if(! data.email ) {
             mainWindow.loadURL( loginUrl );
         } else {
             netWorkAuth.login( data )
@@ -43,7 +43,6 @@ app.on('ready', function() {
                 }).catch( function ( error  ) {
 
                 })
-            // mainWindow.loadURL( indexUrl );
         }
 
     });

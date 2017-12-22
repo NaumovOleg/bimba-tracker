@@ -28,8 +28,10 @@ var Login =  {
            })
 
    },
-    auth: function ( user ) {
-
+    logout: function ( event, args ) {
+        storage.set( 'bimba-tracker-user', {email:null,password:null}, function ( error ) {
+            mainWindow.loadURL( loginUrl )
+        });
     }
 };
 

@@ -1,7 +1,6 @@
 /**
  * author Oleg .
  */
-const ipsRenderer = require( 'electron' ).ipcRenderer;
 
 $(document).ready( function (  ) {
 

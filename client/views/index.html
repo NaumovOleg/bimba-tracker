@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <script >
-    window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.min.js')
+    window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.min.js');
+    var ipsRenderer = require( 'electron' ).ipcRenderer;
 </script>
 
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -25,9 +26,18 @@
 <script src="../bower_components/moment/moment.js"></script>
 <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="../bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
-<body>
 
-index page
+
+<script src="../js/app/app.js"></script>
+<body ng-app="tracker" ng-controller="mainController">
+
+<button ui-sref="projects">Projects</button>
+<button ui-sref="activities">Activities</button>
+<button ui-sref="settings">Settings</button>
+<button ng-click="logout()">Logout</button>
+
+<ui-view>
+</ui-view>
 
 </body>
 </html>
