@@ -1,0 +1,25 @@
+{
+  "name": "bimba-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron  main.js "
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^1.4.13"
+  },
+  "pretty-bytes": "^2.0.1",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "crypto": "^1.0.1",
+    "electron-compiler": "^1.0.9",
+    "electron-cookies": "^1.1.0",
+    "electron-json-storage": "^4.0.2",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.28.6"
+  }
+}
