@@ -2,6 +2,7 @@
  * author Oleg .
  */
 
+
 var AuthCore = require('../../core/network/Auth.js');
 
 
@@ -11,20 +12,22 @@ var Login =  {
            email:args.email,
            password:args.password
        };
-
-       AuthCore.login( user )
+        AuthCore.login( user )
            .then( function ( response  ) {
                if( ! response.error ) {
                     storage.set( 'bimba-tracker-user', {email:response.email, password:user.password}, function ( error ) {
-                       return  event.sender.send('user is logined ')
+
+                        mainWindow.loadURL( indexUrl );
+                        return event.returnValue = 'logined'
                    });
-                   mainWindow.loadURL( indexUrl );
-               } else {
-                   mainWindow.loadURL( loginUrl )
+
+               }
+               else {
+                   return event.returnValue = {error:'invalid login or password'}
                }
            })
            .catch(function ( error ) {
-               return  event.sender.send(error)
+               return  event.returnValue = error
            })
 
    },

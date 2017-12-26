@@ -1,0 +1,19 @@
+/**
+ * Created by Олег on 12/25/2017.
+ */
+body{
+    min-width:750px;
+}
+.container{
+    padding:0;
+    margin:0;
+    width:100%;
+    height: 80%;
+}
+.row{
+    padding:0;
+    margin:0;
+}
+.main-wiew{
+    height:100%
+}

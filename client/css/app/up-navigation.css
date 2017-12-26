@@ -1,0 +1,16 @@
+/**
+ * Created by Олег on 12/25/2017.
+ */
+
+.up-navigation{
+    width:100%;
+    margin-bottom: 15px;
+}
+.up-navigation button{
+    background: none;
+    border: 1px solid #0f0f0f;
+    height:40px;
+}
+.up-navigation button:focus{
+    background: #b0adb8;
+}

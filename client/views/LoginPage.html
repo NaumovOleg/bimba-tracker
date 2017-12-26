@@ -8,12 +8,54 @@
     window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.min.js');
     var ipsRenderer = require( 'electron' ).ipcRenderer;
 </script>
-<script src="../js/loginPage/login.js"></script>
-<body>
 
-<input type="email" placeholder="email" id="email">
-<input type="password" placeholder="password" id="password">
-<button id="login"> sign in </button>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/datamaps/dist/datamaps.all.min.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-material/angular-material.min.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="../bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="../bower_components/angular-ui/build/angular-ui.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../bower_components/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
+<script src="../bower_components/ng-intl-tel-input/dist/ng-intl-tel-input.min.js"></script>
+<script src="../bower_components/intl-tel-input/build/js/utils.js"></script>
+<script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
+
+<!---->
+
+<link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css">
+<link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/LoginPage/Login-page.css">
+<!---->
+
+<script src="../js/LoginPage/app.js"></script>
+
+<body ng-app="login" ng-controller="loginController">
+
+<div class="main-content row align-items-center">
+    <div class="BT-header ">
+        Bimba Tracker
+    </div>
+
+    <div class="login-form " layout="column" layout-align="center center">
+        <input type="text" ng-model="credentials.email" placeholder="email">
+        <input type="password" ng-model="credentials.password" placeholder="password">
+        <div class="error" ng-if="error" >{{error}}</div>
+        <button ng-click="login()" class="login-bottom">Login</button>
+    </div>
+
+</div>
+
+
+
 
 </body>
 </html>
+

@@ -1,0 +1,36 @@
+/**
+ * Created by Олег on 12/25/2017.
+ */
+.right-menu ul{
+    list-style-type: none;
+    padding:0;
+    margin-left:10px;
+}
+.right-menu ul li{
+    height:40px;
+    cursor: pointer;
+}
+
+.right-menu ul li button{
+    width:100%;
+    height:100%;
+    background: none;
+    border:none;
+    outline: none;
+    text-align: left;
+}
+.right-block{
+    margin:0;
+    padding:0;
+    border:1px solid black
+}
+.chekbox{
+    width: 30px;
+    float: right;
+}
+.chekbox md-checkbox{
+    margin:0
+}
+.main-window{
+    height:100%
+}

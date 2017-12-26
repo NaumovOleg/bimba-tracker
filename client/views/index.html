@@ -27,16 +27,33 @@
 <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="../bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
 
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css">
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/app/global.css">
+<link rel="stylesheet" href="../css/app/up-navigation.css">
+<link rel="stylesheet" href="../css/app/pa.css">
+<link rel="stylesheet" href="../css/app/projects.css">
 
 <script src="../js/app/app.js"></script>
+<script src="../js/app/pa/Pa.js"></script>
+<script src="../js/app/pa/Activities.js"></script>
+<script src="../js/app/pa/Projects.js"></script>
+
+
 <body ng-app="tracker" ng-controller="mainController">
 
-<button ui-sref="projects">Projects</button>
-<button ui-sref="activities">Activities</button>
-<button ui-sref="settings">Settings</button>
-<button ng-click="logout()">Logout</button>
 
-<ui-view>
+<div class="up-navigation d-flex flex-row">
+    <button class="col-3" ui-sref="pa.projects">Projects</button>
+    <button class="col-3" ui-sref="pa.activities">Activities</button>
+    <button class="col-3" ui-sref="settings">Settings</button>
+    <button class="col-3" ng-click="logout()">Logout</button>
+</div>
+
+<ui-view class="main-wiew">
 </ui-view>
 
 </body>
