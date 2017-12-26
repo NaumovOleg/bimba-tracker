@@ -53,4 +53,6 @@ angular
         $scope.logout = function (  ) {
             ipsRenderer.send('logout' );
         }
+
+
     }]);
