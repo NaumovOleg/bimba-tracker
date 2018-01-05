@@ -5,7 +5,7 @@
                 <ul>
                     <li ng-repeat="project in pa.projects" layout="row" layout-align="space-between center">
                         <button>
-                            <a ng-click="pa.selectProject(project)">{{project.projectName}}</a>
+                            <a ng-click="pa.selectProject( project )">{{project.name + '('+project.company.shortTitle+')'}}</a>
                             <div class="chekbox" ng-if="showCheckBoxes">
                                 <md-checkbox ng-model="project.checked">
 

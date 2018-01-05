@@ -34,9 +34,9 @@ app.on('ready', function() {
         width: 1200,
         height: 900,
         icon: './client/assets/icon.png',
-        frame:false
+        // frame:false
     });
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     storage.get('bimba-tracker-user', function(error, data) {
         if (error) throw error;
@@ -63,6 +63,8 @@ app.on('ready', function() {
     });
 });
 Routers.setRoutes( ipcMain );
+
+
 
 
 

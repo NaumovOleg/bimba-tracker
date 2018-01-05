@@ -15,10 +15,11 @@ var Login =  {
         AuthCore.login( user )
            .then( function ( response  ) {
                if( ! response.error ) {
-                    storage.set( 'bimba-tracker-user', {email:response.email, password:user.password}, function ( error ) {
+                    storage.set( 'bimba-tracker-user', {email:response.email, password:user.password,id:response.id}, function ( error ) {
 
                         mainWindow.loadURL( indexUrl );
-                        return event.returnValue = 'logined'
+                        return event.returnValue = 'logined';
+
                    });
 
                }
@@ -27,7 +28,7 @@ var Login =  {
                }
            })
            .catch(function ( error ) {
-               return  event.returnValue = error
+               return  event.returnValue = error;
            })
 
    },

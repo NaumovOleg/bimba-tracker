@@ -33,6 +33,7 @@
     "angularjs-datepicker": "^2.1.23",
     "font-awesome": "^4.7.0",
     "components-font-awesome": "^4.7.0",
-    "bootstrap": "v4.0.0-alpha.6"
+    "bootstrap": "v4.0.0-alpha.6",
+    "tether": "^1.4.3"
   }
 }

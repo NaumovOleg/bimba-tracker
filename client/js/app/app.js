@@ -49,10 +49,16 @@ angular
             })
 
     }])
-    .controller ( 'mainController', [ '$scope', '$http', '$window', function ( $scope, $http, $window ) {
+    .controller ( 'mainController', [ '$scope', '$http','$rootScope', '$window', function ( $scope, $http,$rootScope, $window ) {
         $scope.logout = function (  ) {
             ipsRenderer.send('logout' );
-        }
+        };
+
+        $rootScope.projects = ipsRenderer.sendSync('projects/getList');
+        $rootScope.currentProject = $rootScope.projects[0];
+
+
+        console.log(new  Date.getTime());
 
 
     }]);

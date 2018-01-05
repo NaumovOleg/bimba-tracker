@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron  main.js "
+    "start": "electron  main.js ",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "devDependencies": {
-    "electron-prebuilt": "^1.4.13"
+    "electron-prebuilt": "^1.4.13",
+    "electron-winstaller": "^2.6.3"
   },
   "pretty-bytes": "^2.0.1",
   "author": "",
@@ -15,6 +18,7 @@
   "dependencies": {
     "async": "^2.6.0",
     "crypto": "^1.0.1",
+    "electron-builder": "^19.49.2",
     "electron-compiler": "^1.0.9",
     "electron-cookies": "^1.1.0",
     "electron-json-storage": "^4.0.2",

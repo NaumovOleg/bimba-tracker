@@ -8,7 +8,7 @@ angular.module( 'tracker' )
 
         var $this = this;
 
-        this.project = $rootScope.project
+        this.project = $rootScope.project;
 
         $rootScope.$watch('project', function ( value ) {
 
