@@ -47,35 +47,65 @@ const Projects = {
                     ids.push ( id )
                 }
 
-                return TaskModel.findAll ( {
-                    include: [
-                        {
-                            model: EmploeeModel,
-                            as: 'Emploees',
-                            required: true,
-                            where: {
-                                id: {
-                                    $in: ids
+                console.log( ids )
+
+
+                return ProjectModel.findAll({
+                    where:{
+                        status:'in progress',
+                    },
+                    include:[{
+                        model:TaskModel,
+                        as:'Tasks',
+                        required:true,
+                        include:[{
+                            model:EmploeeModel,
+                            as:'Emploees',
+                            where:{
+                                id:{
+                                    $in:ids
                                 }
                             }
-                        },
-                        {
-                            model: ProjectModel,
-                            as: 'Project',
-                            attributes:['name','internalName','status'],
-                            where:{
-                                status:'in progress'
-                            },
-                            required: true,
-                            include: [ {
-                                model: CompanyModel,
-                                as: 'Company',
-                                attributes: [ 'title', 'shortTitle' ]
-                            } ],
-                        }
-                    ],
+                        }]
+                        // where:{
+                        //     EmploeeId:{
+                        //         $in:ids
+                        //     }
+                        // }
+                    }]
+                })
 
-                } );
+                // return TaskModel.findAll ( {
+                //     include: [
+                //         {
+                //             model: EmploeeModel,
+                //             as: 'Emploees',
+                //             required: true,
+                //             where: {
+                //                 id: {
+                //                     $in: ids
+                //                 }
+                //             }
+                //         },
+                //         {
+                //             model: ProjectModel,
+                //             as: 'Project',
+                //             attributes:['name','internalName','status'],
+                //             where:{
+                //                 status:'in progress'
+                //             },
+                //             required: true,
+                //             include: [ {
+                //                 model: CompanyModel,
+                //                 as: 'Company',
+                //                 attributes: [ 'title', 'shortTitle' ]
+                //             } ],
+                //         }
+                //     ],
+                //
+                //
+                //
+                // });
 
             } )
             .catch ( function ( error ) {

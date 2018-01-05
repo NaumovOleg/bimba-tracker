@@ -62,7 +62,15 @@ const Projects = {
                 ProjectsCore.getTasks( data.id  )
                     .then( function ( response  ) {
 
-                        console.log( response )
+                        let projects = [];
+
+                        for ( var i = 0; i < response.length; i++ ) {
+                            var task = response[ i ].dataValues;
+                            console.log('---------------' );
+                            console.log( task );
+                            console.log('---------------' )
+                        }
+
 
                         return event.returnValue = response
                         
