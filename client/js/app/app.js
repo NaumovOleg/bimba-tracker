@@ -54,11 +54,8 @@ angular
             ipsRenderer.send('logout' );
         };
 
-        $rootScope.projects = ipsRenderer.sendSync('projects/getList');
+        $rootScope.projects = ipsRenderer.sendSync('projects/getList' );
+        ipsRenderer.sendSync('projects/getTasks' );
         $rootScope.currentProject = $rootScope.projects[0];
-
-
-        console.log(new  Date.getTime());
-
 
     }]);

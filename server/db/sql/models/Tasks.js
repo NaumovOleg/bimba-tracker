@@ -31,7 +31,7 @@ var TaskModel = function ( sequelize ) {
 
 
         status: {
-            type: Sequelize.STRING
+            type: Sequelize.BOOLEAN
         }
 
     } );

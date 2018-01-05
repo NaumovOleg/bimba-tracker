@@ -8,6 +8,7 @@ const Router = {
         ipcmain.on('logout',  API.auth.logout);
         ipcmain.on('emploee/getList',  API.companies.getList);
         ipcmain.on('projects/getList',  API.projects.getList);
+        ipcmain.on('projects/getTasks',  API.projects.getTasks );
     }
 };
 

@@ -4,6 +4,7 @@
 */
 
 var Sequelize = require('sequelize');
+require('sequelize-values')(Sequelize);
 var mysql = require('mysql');
 var environment = require( '../../config/LocalEnvironment.js');
 
@@ -73,7 +74,7 @@ models.companies.hasMany( models.employees );
 models.employees.belongsTo( models.companies, { as: 'Company', foreignKey: 'CompanyId' } );
 
 models.projects.hasMany( models.tasks );
-models.tasks.belongsTo( models.projects, { as: 'Task', foreignKey: 'ProjectId' } );
+models.tasks.belongsTo( models.projects, { as: 'Project', foreignKey: 'ProjectId' } );
 
 
 

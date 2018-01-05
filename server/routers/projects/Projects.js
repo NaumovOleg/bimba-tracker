@@ -48,6 +48,32 @@ const Projects = {
             }
         })
 
+    },
+
+    getTasks:( event,args)=>{
+        'use strict';
+
+        storage.get('bimba-tracker-user',function ( error,data ) {
+
+            if( error || !data.id ) {
+                return  event.returnValue = error
+            } else {
+                
+                ProjectsCore.getTasks( data.id  )
+                    .then( function ( response  ) {
+
+                        console.log( response )
+
+                        return event.returnValue = response
+                        
+                    })
+                    .catch( function ( error ) {
+                        
+                    })
+
+            }
+        })
+
     }
 };
 
