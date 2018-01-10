@@ -8,10 +8,20 @@ angular.module( 'tracker' )
 
     var $this = this;
 
-    $this.projects = $rootScope.projects;
+    $scope.company = {};
+
+
 
     $this.selectProject = function (  project ) {
         $rootScope.currentProject = project
+    };
+
+    $this.selectCompany = function(  ){
+
+        var company = JSON.parse( $scope.company );
+
+        $rootScope.projects =  ipsRenderer.sendSync('projects/changeCompany',{ id: company.id,title: company.title} );
+
     };
 
     $scope.showCheckBoxes = false;

@@ -1,88 +1,87 @@
 /**
  * author Oleg .
  */
-const ProjectsCore = require( '../../core/network/Projects.js' );
+const ProjectsCore = require ( '../../core/network/Projects.js' );
 const Projects = {
-    getList:(event,args) =>{
+    changeCompany: ( event, args ) => {
         'use strict';
 
-        // let companiesId = args.companies;
+        let companyId = args.id;
 
-        storage.get('bimba-tracker-user', function(error, data) {
-
-            if (error || ! data.id)  throw error;
+        storage.set ( 'bimba-tracker-company',args, function ( error ) {
+            if ( error  )  throw error;
             else {
-                ProjectsCore.getList(data.id )
-                    .then( function ( employees  ) {
 
-                        let projects = [];
-
-                        for ( var i = 0; i < employees.length; i++ ) {
-                            var emploee = employees[ i ].dataValues;
-
-                            for ( var j = 0; j < emploee.Projects.length; j++ ) {
-                                var project = emploee.Projects[ j ].dataValues;
-
-                                var emploeesProject = {};
-
-                                emploeesProject.id = project.id;
-                                emploeesProject.name = project.name;
-                                emploeesProject.internalName = project.internalName;
-                                emploeesProject.startDate = project.startDate;
-                                emploeesProject.endDate = project.endDate;
-                                emploeesProject.company = project.Company.dataValues;
-
-                                projects.push( emploeesProject )
-
-                            }
-
-                        };
-
-                        return event.returnValue = projects;
-
-                    })
-                    .catch( function ( error ) {
-                        return event.returnValue = error;
-                    })
+                Projects.getDefaultProjets ( event )
 
             }
-        })
+        } )
+
 
     },
 
-    getTasks:( event,args)=>{
+    getDefaultProjets: ( event ) => {
+
+        return storage.get ( 'bimba-tracker-user', function ( error, data ) {
+
+            let uid = data.id;
+            if ( !error ) {
+                return storage.get ( 'bimba-tracker-company', function ( error, data ) {
+
+                    let companyId = data.id;
+
+                    return ProjectsCore.getList ( uid, companyId )
+                        .then ( function ( response ) {
+
+                            global.projects = response[ 0 ].dataValues.Projects;
+                            event.returnValue = projects;
+
+
+                        } )
+                        .catch ( function ( error ) {
+
+                            console.log ( error )
+
+                        } )
+                } )
+            }
+
+        } )
+
+
+    },
+
+    getTasks: ( event, args ) => {
         'use strict';
 
-        storage.get('bimba-tracker-user',function ( error,data ) {
+        storage.get ( 'bimba-tracker-user', function ( error, data ) {
 
-            if( error || !data.id ) {
-                return  event.returnValue = error
+            if ( error || !data.id ) {
+                return event.returnValue = error
             } else {
-                
-                ProjectsCore.getTasks( data.id  )
-                    .then( function ( response  ) {
+
+                ProjectsCore.getTasks ( data.id )
+                    .then ( function ( response ) {
 
                         let projects = [];
 
                         for ( var i = 0; i < response.length; i++ ) {
                             var task = response[ i ].dataValues;
-                            console.log('---------------' );
-                            console.log( task );
-                            console.log('---------------' )
                         }
 
 
                         return event.returnValue = response
-                        
-                    })
-                    .catch( function ( error ) {
-                        
-                    })
+
+                    } )
+                    .catch ( function ( error ) {
+
+                    } )
 
             }
-        })
+        } )
 
     }
 };
 
 module.exports = Projects;
+

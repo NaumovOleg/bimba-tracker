@@ -6,9 +6,13 @@ const Router = {
     setRoutes :( ipcmain ) =>{
         ipcmain.on('login',  API.auth.login);
         ipcmain.on('logout',  API.auth.logout);
-        ipcmain.on('emploee/getList',  API.companies.getList);
-        ipcmain.on('projects/getList',  API.projects.getList);
+        ipcmain.on('emploee/getList',  API.emploees.getList);
+        ipcmain.on('projects/getList',  API.projects.getDefaultProjets );
+        ipcmain.on('projects/changeCompany', API.projects.changeCompany )
         ipcmain.on('projects/getTasks',  API.projects.getTasks );
+
+
+        ipcmain.on('company/getMyList',  API.companies.getMyList );
     }
 };
 

@@ -4,8 +4,9 @@
 
 const Api = {
     auth:require('../auth/Auth.js' ),
-    companies:require('../emploee/Emploee.js' ),
-    projects :require('../projects/Projects')
+    emploees:require('../emploee/Emploee.js' ),
+    projects :require('../projects/Projects'),
+    companies:require('../companies/Companies.js' )
 };
 
 module.exports = Api;

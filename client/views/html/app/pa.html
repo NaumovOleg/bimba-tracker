@@ -1,11 +1,12 @@
 <div class="container">
     <div class="row main-window">
-        <div class="col-3 right-block">
+        <div class="col-3 right-block" layout="row" layout-align="center center">
+
             <div class="right-menu">
                 <ul>
-                    <li ng-repeat="project in pa.projects" layout="row" layout-align="space-between center">
+                    <li ng-repeat="project in projects" layout="row" layout-align="space-between center">
                         <button>
-                            <a ng-click="pa.selectProject( project )">{{project.name + '('+project.company.shortTitle+')'}}</a>
+                            <a ng-click="pa.selectProject( project )">{{project.name}}</a>
                             <div class="chekbox" ng-if="showCheckBoxes">
                                 <md-checkbox ng-model="project.checked">
 
@@ -15,6 +16,13 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="select-company">
+                <md-select  placeholder="Select a company" ng-model="company" ng-change="pa.selectCompany(  )">
+                    <md-option ng-repeat="company in companies" value="{{ company }}"  >{{ company.title }}</md-option>
+                </md-select>
+            </div>
+
         </div>
         <div class="col-9">
             <ui-view></ui-view>

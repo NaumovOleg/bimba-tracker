@@ -5,6 +5,8 @@
 
 var AuthCore = require('../../core/network/Auth.js');
 
+const CompaniesCore = require('../../core/network/Companies.js' );
+
 
 var Login =  {
    login : ( event, args ) =>{
@@ -15,10 +17,33 @@ var Login =  {
         AuthCore.login( user )
            .then( function ( response  ) {
                if( ! response.error ) {
-                    storage.set( 'bimba-tracker-user', {email:response.email, password:user.password,id:response.id}, function ( error ) {
+                  return  storage.set( 'bimba-tracker-user', {email:response.email, password:user.password,id:response.id}, function ( error ) {
 
-                        mainWindow.loadURL( indexUrl );
-                        return event.returnValue = 'logined';
+                      CompaniesCore.getList( response.id )
+                          .then( function ( response  ) {
+
+                              let companyList = [];
+                              for ( var i = 0; i < response.length; i++ ) {
+                                  var obj = response[ i ].dataValues.Company.dataValues;
+                                  var company = {
+                                      id:obj.id,
+                                      title:obj.title
+                                  };
+
+                                  companyList.push( company )
+
+                              };
+
+                              storage.set('bimba-tracker-company',companyList[0], function ( error ) {
+                                  mainWindow.loadURL( indexUrl );
+                              });
+
+                              event.returnValue = companyList;
+                          })
+                          .catch( function ( error ) {
+
+                          })
+
 
                    });
 
@@ -34,8 +59,12 @@ var Login =  {
    },
     logout: function ( event, args ) {
         storage.set( 'bimba-tracker-user', {email:null,password:null}, function ( error ) {
-            mainWindow.loadURL( loginUrl )
+
+            storage.set( 'bimba-tracker-company',null, function ( error ) {
+                mainWindow.loadURL( loginUrl )
+            });
         });
+
     }
 };
 

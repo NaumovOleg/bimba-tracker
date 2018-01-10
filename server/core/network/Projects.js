@@ -7,26 +7,19 @@ const CompanyModel = require ( '../../db/sql/Connection.js' ).models.companies;
 const TaskModel = require ( '../../db/sql/Connection.js' ).models.tasks;
 
 const Projects = {
-    getList: ( uid ) => {
+    getList: ( uid,companyId ) => {
         'use strict';
 
-        return EmploeeModel.findAll ( {
-            where: { UserId: uid },
-            attributes: [ 'id', 'CompanyId' ],
-            include: [ {
-                model: ProjectModel,
-                as: 'Projects',
-                where: {
-                    status: 'in progress'
-                },
-                attributes: [ 'id', 'name', 'internalName', 'startDate', 'endDate' ],
-                include: [ {
-                    model: CompanyModel,
-                    as: 'Company',
-                    attributes: [ 'id', 'title', 'shortTitle', 'owner' ]
-                } ],
-            } ],
-        } )
+        return EmploeeModel.findAll({
+            where:{
+                UserId:uid,
+                CompanyId:companyId
+            },
+            include:[{
+                model:ProjectModel,
+                as:'Projects'
+            }]
+        })
 
     },
     getTasks: ( uid ) => {
@@ -67,45 +60,9 @@ const Projects = {
                                 }
                             }
                         }]
-                        // where:{
-                        //     EmploeeId:{
-                        //         $in:ids
-                        //     }
-                        // }
+
                     }]
                 })
-
-                // return TaskModel.findAll ( {
-                //     include: [
-                //         {
-                //             model: EmploeeModel,
-                //             as: 'Emploees',
-                //             required: true,
-                //             where: {
-                //                 id: {
-                //                     $in: ids
-                //                 }
-                //             }
-                //         },
-                //         {
-                //             model: ProjectModel,
-                //             as: 'Project',
-                //             attributes:['name','internalName','status'],
-                //             where:{
-                //                 status:'in progress'
-                //             },
-                //             required: true,
-                //             include: [ {
-                //                 model: CompanyModel,
-                //                 as: 'Company',
-                //                 attributes: [ 'title', 'shortTitle' ]
-                //             } ],
-                //         }
-                //     ],
-                //
-                //
-                //
-                // });
 
             } )
             .catch ( function ( error ) {
@@ -118,3 +75,27 @@ const Projects = {
 };
 
 module.exports = Projects;
+
+
+// getList: ( uid ) => {
+//     'use strict';
+//
+//     return EmploeeModel.findAll ( {
+//         where: { UserId: uid },
+//         attributes: [ 'id', 'CompanyId' ],
+//         include: [ {
+//             model: ProjectModel,
+//             as: 'Projects',
+//             where: {
+//                 status: 'in progress'
+//             },
+//             attributes: [ 'id', 'name', 'internalName', 'startDate', 'endDate' ],
+//             include: [ {
+//                 model: CompanyModel,
+//                 as: 'Company',
+//                 attributes: [ 'id', 'title', 'shortTitle', 'owner' ]
+//             } ],
+//         } ],
+//     } )
+//
+// },
