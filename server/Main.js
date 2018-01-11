@@ -17,11 +17,11 @@ const createWindow = () => {
         width: 250,
         height: 310,
         show: false,
-        frame: false,
+        frame: true,
         fullscreenable: false,
-        resizable: false,
+        resizable: true,
         transparent: false,
-    } )
+    } );
     window.loadURL ( 'file://' + __dirname + '/../client/views/Tray.html' );
 };
 
