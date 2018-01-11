@@ -61,6 +61,8 @@ var Login =  {
         storage.set( 'bimba-tracker-user', {email:null,password:null}, function ( error ) {
 
             storage.set( 'bimba-tracker-company',null, function ( error ) {
+                tray.destroy();
+                window = null;
                 mainWindow.loadURL( loginUrl )
             });
         });

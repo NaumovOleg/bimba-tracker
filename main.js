@@ -3,6 +3,7 @@ const electron = require('electron');
 var { app, BrowserWindow ,Tray,clipboard,Menu} = require('electron');
 var async = require('async');
 var path = require( 'path' );
+
 app.commandLine.appendSwitch( "js-flags", "--harmony-async-await");
 app.commandLine.appendSwitch( "js-flags", "enable-file-cookies");
 global.storage = require('electron-json-storage');
@@ -19,17 +20,14 @@ app.on('window-all-closed', function() {
     }
 });
 
+
 //
 var appIcon = null;
 var pathIc = path.join('./assets/icon.png');
 app.on('ready', function() {
-
-    const iconName = process.platform === 'win32' ? 'app.ico' : 'app.ico';
-    const iconPath = path.join(__dirname+'/assets/', iconName);
-
-    // appIcon = new Tray(iconPath);
-
-
+    global.width = electron.screen.getAllDisplays()[0].size.width;
+    global.height = electron.screen.getAllDisplays()[0].size.height;
+    global.iconPath = path.join(__dirname+'/assets/', 'icon.png');
     global.mainWindow = new BrowserWindow({
         width: 1200,
         height: 900,
@@ -47,6 +45,7 @@ app.on('ready', function() {
                 .then( function ( response ) {
                     if( ! response.error ) {
                         mainWindow.loadURL( indexUrl );
+                       require('./server/Main.js').createTray();
                     } else {
                         mainWindow.loadURL( loginUrl )
                     }
@@ -60,9 +59,11 @@ app.on('ready', function() {
 
     mainWindow.on('closed', function() {
         mainWindow = null;
+        window = null;
     });
 });
 Routers.setRoutes( ipcMain );
+
 
 
 

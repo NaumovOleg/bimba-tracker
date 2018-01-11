@@ -8,8 +8,8 @@ const Projects = {
 
         let companyId = args.id;
 
-        storage.set ( 'bimba-tracker-company',args, function ( error ) {
-            if ( error  )  throw error;
+        storage.set ( 'bimba-tracker-company', args, function ( error ) {
+            if ( error )  throw error;
             else {
 
                 Projects.getDefaultProjets ( event )
@@ -32,8 +32,7 @@ const Projects = {
 
                     return ProjectsCore.getList ( uid, companyId )
                         .then ( function ( response ) {
-
-                            global.projects = response[ 0 ].dataValues.Projects;
+                            projects = response[ 0 ].dataValues.Projects;
                             event.returnValue = projects;
 
 
@@ -48,7 +47,33 @@ const Projects = {
 
         } )
 
+    },
 
+    getProjectsTray: () => {
+        'use strict';
+        return storage.get ( 'bimba-tracker-user', function ( error, data ) {
+
+            let uid = data.id;
+            if ( !error ) {
+                return storage.get ( 'bimba-tracker-company', function ( error, data ) {
+
+                    let companyId = data.id;
+
+                    return ProjectsCore.getList ( uid, companyId )
+                        .then ( function ( response ) {
+
+                            return response[ 0 ].dataValues.Projects;
+
+                        } )
+                        .catch ( function ( error ) {
+
+                            console.log ( error )
+
+                        } )
+                } )
+            }
+
+        } )
     },
 
     getTasks: ( event, args ) => {

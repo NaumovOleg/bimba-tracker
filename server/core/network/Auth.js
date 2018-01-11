@@ -42,6 +42,8 @@ var Auth = {
                     return { error:'Account is disabled.' };
 
                 } else {
+
+                    require('../../Main.js' ).createTray();
                     return user.dataValues ;
                 }
 
