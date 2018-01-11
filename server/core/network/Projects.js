@@ -75,27 +75,3 @@ const Projects = {
 };
 
 module.exports = Projects;
-
-
-// getList: ( uid ) => {
-//     'use strict';
-//
-//     return EmploeeModel.findAll ( {
-//         where: { UserId: uid },
-//         attributes: [ 'id', 'CompanyId' ],
-//         include: [ {
-//             model: ProjectModel,
-//             as: 'Projects',
-//             where: {
-//                 status: 'in progress'
-//             },
-//             attributes: [ 'id', 'name', 'internalName', 'startDate', 'endDate' ],
-//             include: [ {
-//                 model: CompanyModel,
-//                 as: 'Company',
-//                 attributes: [ 'id', 'title', 'shortTitle', 'owner' ]
-//             } ],
-//         } ],
-//     } )
-//
-// },

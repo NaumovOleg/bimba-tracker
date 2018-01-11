@@ -7,7 +7,9 @@ angular.module ( 'tray', [
     'ngAnimate',
     'ngCookies',
 ] )
-    .controller ( 'trayController', ['$rootScope', '$scope',  function ( $rootscope, $scope ) {
+    .controller ( 'trayController', ['$rootScope', '$scope',  function ( $rootScope, $scope ) {
+        $rootScope.projects =  ipsRenderer.sendSync('projects/getList' );
 
+        console.log( $rootScope.projects )
 
     } ] );

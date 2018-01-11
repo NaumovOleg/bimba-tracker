@@ -1,9 +1,11 @@
-const { app, BrowserWindow, ipcMain, Tray } = require ( 'electron' )
+const { app, BrowserWindow, ipcMain, Tray } = require ( 'electron' );
 const path = require ( 'path' );
 
 
 global.tray = undefined;
 global.window = undefined;
+
+let showTray = false;
 
 const createTray = () => {
     tray = new Tray ( iconPath );
@@ -36,6 +38,7 @@ const toggleWindow = () => {
 const showWindow = () => {
     window.setPosition ( width - 300, height - 400, false );
     window.show ();
+
     window.focus ();
 };
 
