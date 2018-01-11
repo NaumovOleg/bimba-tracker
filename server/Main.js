@@ -38,7 +38,7 @@ const toggleWindow = () => {
 const showWindow = () => {
     window.setPosition ( width - 300, height - 400, false );
     window.show ();
-
+    window.reload();
     window.focus ();
 };
 

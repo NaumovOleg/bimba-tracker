@@ -35,7 +35,11 @@
 
     <script src="../js/tray/app.js"></script>
 </head>
-<body ng-app="tray" ng-controller="trayController">
+<body ng-app="tray" ng-controller="trayController" ng-cloak>
+
+<div class="projects">
+    <div class="ex" ng-repeat="project in projects">{{project.name}}</div>
+</div>
 
 </body>
 </html>
