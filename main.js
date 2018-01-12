@@ -1,3 +1,5 @@
+// start point
+
 'use strict';
 const electron = require('electron');
 var { app, BrowserWindow ,Tray,clipboard,Menu} = require('electron');
@@ -25,6 +27,7 @@ app.on('window-all-closed', function() {
 var appIcon = null;
 var pathIc = path.join('./assets/icon.png');
 app.on('ready', function() {
+    //build main window and creates shared global objects
     global.width = electron.screen.getAllDisplays()[0].size.width;
     global.height = electron.screen.getAllDisplays()[0].size.height;
     global.iconPath = path.join(__dirname+'/assets/', 'icon.png');

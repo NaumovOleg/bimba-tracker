@@ -7,7 +7,6 @@ const CompanyModel = require('../../db/sql/Connection.js').models.companies;
 const Emploee = {
 
     getList:( uid ) =>{
-
        return EmploeeModel.findAll( {
            where:{'UserId':uid},
            attributes:['id','UserId','disabled','CompanyId'],
@@ -20,7 +19,10 @@ const Emploee = {
 
     },
 
-    setCurrentEmploee:( companyId)=>{
+
+
+    // according selected current company  and user  returns emploee
+    setCurrentEmploee:( companyId )=>{
         'use strict';
 
         storage.get ( 'bimba-tracker-user',  function ( error , data ) {

@@ -5,6 +5,8 @@ const ProjectsCore = require ( '../../core/network/Projects.js' );
 const EmploeeCore = require( '../../core/network/Emploee.js' );
 
 const Projects = {
+
+    // returns projects of company you have changed and set company as a current to json storage
     changeCompany: ( event, args ) => {
         'use strict';
 
@@ -23,6 +25,9 @@ const Projects = {
 
 
     },
+
+
+    // returns list of projects of setted default company
 
     getDefaultProjets: ( event ) => {
 

@@ -7,7 +7,7 @@ var AuthCore = require('../../core/network/Auth.js');
 
 const CompaniesCore = require('../../core/network/Companies.js' );
 
-
+// function for authentification user to system ( sets uderId and defaul emploee and company to json storage)
 var Login =  {
    login : ( event, args ) =>{
        var user = {
@@ -55,6 +55,8 @@ var Login =  {
            })
 
    },
+
+    // throws user to login page and clears json storage
     logout: function ( event, args ) {
         storage.set( 'bimba-tracker-user', {email:null,password:null}, function ( error ) {
             storage.set( 'bimba-tracker-company',null, function ( error ) {

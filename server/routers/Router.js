@@ -10,7 +10,6 @@ const Router = {
         ipcmain.on('projects/getList',  API.projects.getDefaultProjets );
         ipcmain.on('projects/changeCompany', API.projects.changeCompany );
         ipcmain.on('project/getTasks', API.tasks.getList );
-
         ipcmain.on('company/getMyList',  API.companies.getMyList );
     }
 };

@@ -4,6 +4,8 @@
 const CompaniesCore = require('../../core/network/Companies.js' );
 
 var Company ={
+
+    // returns companies list to which user is assigned
     getMyList:( event,args )=>{
         'use strict';
 

@@ -25,8 +25,6 @@ var TaskModel = function ( sequelize ) {
             type: Sequelize.TIME
         },
 
-
-
         status: {
             type: Sequelize.BOOLEAN
         }

@@ -1,3 +1,7 @@
+
+/*shared js file which is globally used and destined for using main methods related to main and rendered process
+exactly for creating windows*/
+
 const { app, BrowserWindow, ipcMain, Tray } = require ( 'electron' );
 const path = require ( 'path' );
 
