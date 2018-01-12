@@ -25,6 +25,10 @@ var Employee_Tasks = function ( sequelize ) {
             referencesKey: 'id',
             allowNull: false
         },
+        consumedTime: {
+            type: Sequelize.TIME
+        },
+
 
 
     });

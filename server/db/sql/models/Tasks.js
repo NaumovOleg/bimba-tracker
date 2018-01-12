@@ -25,9 +25,6 @@ var TaskModel = function ( sequelize ) {
             type: Sequelize.TIME
         },
 
-        consumedTime: {
-            type: Sequelize.TIME
-        },
 
 
         status: {

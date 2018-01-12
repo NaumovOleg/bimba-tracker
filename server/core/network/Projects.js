@@ -22,54 +22,15 @@ const Projects = {
         })
 
     },
-    getTasks: ( uid ) => {
-        'use strict';
-        return EmploeeModel.findAll ( {
-            where: {
-                UserId: uid
-            },
-            attributes: [ 'id' ],
-        })
-            .then ( function ( response ) {
+    getTasks: ( project ) => {
+        storage.get( 'bimba-tracker-user',  function ( error , user) {
 
+            let uid = user.id;
+            storage.get( 'bimba-tracker-company',function ( error , comp) {
+               let company = comp.id;
 
-                let ids = [];
-
-                for ( var i = 0; i < response.length; i++ ) {
-                    var id = response[ i ].dataValues.id;
-                    ids.push ( id )
-                }
-
-                console.log( ids )
-
-
-                return ProjectModel.findAll({
-                    where:{
-                        status:'in progress',
-                    },
-                    include:[{
-                        model:TaskModel,
-                        as:'Tasks',
-                        required:true,
-                        include:[{
-                            model:EmploeeModel,
-                            as:'Emploees',
-                            where:{
-                                id:{
-                                    $in:ids
-                                }
-                            }
-                        }]
-
-                    }]
-                })
-
-            } )
-            .catch ( function ( error ) {
-
-                return error
-
-            } )
+            });
+        });
 
     }
 };

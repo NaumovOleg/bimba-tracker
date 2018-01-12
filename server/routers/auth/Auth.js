@@ -29,9 +29,7 @@ var Login =  {
                                       id:obj.id,
                                       title:obj.title
                                   };
-
                                   companyList.push( company )
-
                               };
 
                               storage.set('bimba-tracker-company',companyList[0], function ( error ) {
@@ -59,11 +57,12 @@ var Login =  {
    },
     logout: function ( event, args ) {
         storage.set( 'bimba-tracker-user', {email:null,password:null}, function ( error ) {
-
             storage.set( 'bimba-tracker-company',null, function ( error ) {
-                tray.destroy();
-                window = null;
-                mainWindow.loadURL( loginUrl )
+                storage.set( 'bimba-tracker-emploee',null, function ( error ) {
+                    tray.destroy();
+                    window = null;
+                    mainWindow.loadURL( loginUrl )
+                });
             });
         });
 

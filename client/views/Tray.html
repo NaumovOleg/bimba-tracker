@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script >
-        window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.min.js');
-        var ipsRenderer = require( 'electron' ).ipcRenderer;
+    <script>
+        window.$ = window.jQuery = require ( '../bower_components/jquery/dist/jquery.min.js' );
+        var ipsRenderer = require ( 'electron' ).ipcRenderer;
     </script>
     <script src="../bower_components/tether/dist/js/tether.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -36,9 +36,18 @@
     <script src="../js/tray/app.js"></script>
 </head>
 <body ng-app="tray" ng-controller="trayController" ng-cloak>
+<div class="main-window row">
+    <div class="tasks col-8">
+        <div class="tasks" ng-repeat="task in tasks">
+            {{task.id }}/{{task.trelloLink}}
+        </div>
 
-<div class="projects">
-    <div class="ex" ng-repeat="project in projects">{{project.name}}</div>
+    </div>
+    <div class="projects">
+        <div class="projects col-4">
+            <div class="ex" ng-click="getTasks(project.id)" ng-repeat="project in projects">{{project.name}}</div>
+        </div>
+    </div>
 </div>
 
 </body>

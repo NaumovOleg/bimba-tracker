@@ -16,7 +16,7 @@ const createTray = () => {
 
 const createWindow = () => {
     window = new BrowserWindow ( {
-        width: 250,
+        width: 500,
         height: 310,
         show: false,
         frame: true,
@@ -36,7 +36,7 @@ const toggleWindow = () => {
 };
 
 const showWindow = () => {
-    window.setPosition ( width - 300, height - 400, false );
+    window.setPosition ( width - 700, height - 400, false );
     window.show ();
     window.reload();
     window.focus ();
@@ -53,6 +53,6 @@ const MAIN = {
         createTray();
         createWindow();
     }
-}
+};
 
 module.exports = MAIN;

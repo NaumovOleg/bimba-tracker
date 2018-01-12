@@ -27,19 +27,13 @@ var Company ={
                             companyList.push( company )
 
                         };
-
                         event.returnValue = companyList;
                     })
                     .catch( function ( error ) {
 
                     })
-
-
             }
-
         })
-
-
 
     }
 };

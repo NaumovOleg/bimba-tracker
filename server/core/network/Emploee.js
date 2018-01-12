@@ -18,6 +18,34 @@ const Emploee = {
            }],
        });
 
+    },
+
+    setCurrentEmploee:( companyId)=>{
+        'use strict';
+
+        storage.get ( 'bimba-tracker-user',  function ( error , data ) {
+            if ( error )  throw error;
+            else {
+
+                let uid = data.id;
+
+               return EmploeeModel.findAll({
+                    where:{
+                        UserId:uid,
+                        CompanyId:companyId
+                    }
+                }).then( function ( response  ) {
+
+                    storage.set('bimba-tracker-emploee', response[0].dataValues.id , function (  ) {
+
+                    })
+
+               })
+
+
+            }
+        })
+
     }
 
 };
