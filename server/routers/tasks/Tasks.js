@@ -13,15 +13,11 @@ let Tasks = {
 
            TaskCore.getTasks( projectId , response )
                .then( function ( response ) {
-
                    for ( var i = 0; i < response.length; i++ ) {
                        var obj = response[ i ].dataValues;
                        tasks.push( obj )
-
                    }
-
-                   return event.returnValue = tasks
-
+                   return event.returnValue = tasks;
                })
        });
     },

@@ -28,7 +28,7 @@ angular.module ( 'tray', [
                 $scope.count = 0;
                 setInterval( function (  ) {
                   $scope.count=$scope.count+1;
-                },1000 );
+                },60*1000 );
             }
             else {
                 myTasks[id].active  = !myTasks[id].active;
