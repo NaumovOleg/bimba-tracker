@@ -19,6 +19,19 @@ let Tasks = {
                 }
             }]
         } )
+    },
+    setTime:( id, time )=>{
+        'use strict';
+        return TaskModel.update (
+            {
+                consumedTime:time
+            },
+            {
+                where:{
+                    id:id
+                },
+
+            })
     }
 };
 

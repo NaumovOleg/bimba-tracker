@@ -22,9 +22,14 @@ var TaskModel = function ( sequelize ) {
             type: Sequelize.STRING
         },
         estimatedTime: {
-            type: Sequelize.TIME
+            type: Sequelize.INTEGER
         },
-
+        consumedTime:{
+            type:Sequelize.INTEGER
+        },
+        description:{
+            type:Sequelize.STRING
+        },
         status: {
             type: Sequelize.BOOLEAN
         }

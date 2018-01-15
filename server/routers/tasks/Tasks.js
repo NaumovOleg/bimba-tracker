@@ -24,7 +24,18 @@ let Tasks = {
 
                })
        });
+    },
 
+    setConsumedTime:(event, args )=>{
+        'use strict';
+        let task = args.task;
+        let time = args.time;
+        TaskCore.setTime( task,time )
+            .then( function ( resposne  ) {
+                return event.returnValue = resposne
+            })
+            .catch( function ( error  ) {
+            })
 
     }
 };

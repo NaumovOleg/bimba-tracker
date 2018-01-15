@@ -1,11 +1,11 @@
 /**
  * author Oleg .
  */
-var Sequelize = require('sequelize');
+var Sequelize = require ( 'sequelize' );
 
 var Employee_Tasks = function ( sequelize ) {
 
-    var EmployeeTask = sequelize.define('employee-tasks', {
+    var EmployeeTask = sequelize.define ( 'employee-tasks', {
 
         id: {
             type: Sequelize.INTEGER,
@@ -26,12 +26,13 @@ var Employee_Tasks = function ( sequelize ) {
             allowNull: false
         },
         consumedTime: {
-            type: Sequelize.TIME
+            type: Sequelize.INTEGER
+        },
+        estimatedTime: {
+            type: Sequelize.INTEGER
         },
 
-
-
-    });
+    } );
 
     return EmployeeTask;
 
@@ -40,3 +41,4 @@ var Employee_Tasks = function ( sequelize ) {
 //
 
 module.exports = Employee_Tasks;
+

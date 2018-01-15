@@ -38,14 +38,25 @@
 <body ng-app="tray" ng-controller="trayController" ng-cloak>
 <div class="main-window row">
     <div class="tasks col-8">
+
         <div class="tasks" ng-repeat="task in tasks">
-            {{task.id }}/{{task.trelloLink}}
+            <div class="task">{{task.description}}</div>
+            <div class="link">{{task.trelloLink}}</div>
+            <div class="consumed">
+                {{task.consumedTime}}
+            </div>
+            <div class="but">
+<button ng-click="countTask(task.id,task.consumedTime)">dddd</button>
+            </div>
+            <div class="estimated">
+                {{task.estimatedTime}}
+            </div>
         </div>
 
     </div>
     <div class="projects">
         <div class="projects col-4">
-            <div class="ex" ng-click="getTasks(project.id)" ng-repeat="project in projects">{{project.name}}</div>
+            <div class="ex" ng-click="getTasks(project.id)" ng-repeat="project in projects">{{project.name}}/{{project.id }}</div>
         </div>
     </div>
 </div>
