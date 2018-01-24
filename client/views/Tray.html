@@ -27,35 +27,62 @@
     <script src="../bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
 
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css"></link>
 
 
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css">
 
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
 
+    <link rel="stylesheet" href="../css/tray/tray.css">
+
     <script src="../js/tray/app.js"></script>
 </head>
 <body ng-app="tray" ng-controller="trayController" ng-cloak>
 <div class="main-window row">
     <div class="tasks col-8">
+        <table>
+            <tr>
+                <td>Description</td>
+                <td>trello link</td>
+                <td>Consumed time</td>
+                <td> Track me </td>
+                <td> Estimated time</td>
 
-        <div class="tasks" ng-repeat="task in tasks">
-            <div class="task">{{task.description}}</div>
-            <div class="link">{{task.trelloLink}}</div>
-            <div class="consumed">
-                {{task.consumedTime}}
-            </div>
-            <div class="but">
-<button ng-click="countTask(task.id,task.consumedTime)">dddd</button>
-            </div>
-            <div class="estimated">
-                {{task.estimatedTime}}
-            </div>
-        </div>
+            </tr>
+            <tr class="tasks-tr" ng-repeat="task in tasks">
+                <td>{{task.description}}</td>
+                <td>{{task.trelloLink}}</td>
+                <td>{{task.consumedTime}}</td>
+                <td>
+                    <a class="play-button-tracker "  id={{task.id}} ng-click="countTask(task.id,task.consumedTime)"><i
+                                       class="fa fa-play"
+                                                                                               aria-hidden="true"></i></a>
+                </td>
+                <td> {{task.estimatedTime}}</td>
+
+            </tr>
+        </table>
+
+        <!--<div class="tasks" ng-repeat="task in tasks" layout="row" layout-align="start center" >-->
+            <!--<div class="task">{{task.description}}</div>-->
+            <!--<div class="link">{{task.trelloLink}}</div>-->
+            <!--<div class="consumed">-->
+                <!--{{task.consumedTime}}-->
+            <!--</div>-->
+            <!--<div class="but">-->
+            <!--<a class="play-button-tracker "  id={{task.id}} ng-click="countTask(task.id,task.consumedTime)"><i-->
+                    <!--class="fa fa-play"-->
+                                                                            <!--aria-hidden="true"></i></a>-->
+            <!--</div>-->
+            <!--<div class="estimated">-->
+                <!--{{task.estimatedTime}}-->
+            <!--</div>-->
+        <!--</div>-->
 
     </div>
     <div class="projects">
-        <div class="projects col-4">
+        <div class="projects-bl col-4">
             <div class="ex" ng-click="getTasks(project.id)" ng-repeat="project in projects">{{project.name}}/{{project.id }}</div>
         </div>
     </div>

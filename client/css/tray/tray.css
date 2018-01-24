@@ -2,6 +2,22 @@
  * Created by Олег on 1/12/2018.
  */
 .main-window{
-    padding:0;
-    margin:0;
+    padding:0!important;
+    margin:0!important;
+    font-size: 10px;
+}
+.main-window .projects{
+    border:1px solid gray;
+}
+.main-window .tasks{
+    border:1px solid gray;
+}
+.tasks table tr{
+    text-align: center;
+    margin-top:4px;
+    border:1px solid gray
+}
+.tasks table tr td{
+    margin-top:4px;
+    border-right:1px solid gray
 }

@@ -2,7 +2,6 @@
  * @author ohmed
  * Stage environment config file
 */
-
 var config = {
 
     name:           'Stage testing environment',
