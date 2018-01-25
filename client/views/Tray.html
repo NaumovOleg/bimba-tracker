@@ -50,12 +50,13 @@
                 <td> Estimated time</td>
 
             </tr>
-            <tr class="tasks-tr" ng-repeat="task in tasks">
+            <tr class="tasks-tr" ng-repeat="(i,task) in tasks">
                 <td>{{task.description}}</td>
                 <td>{{task.trelloLink}}</td>
-                <td>{{task.consumedTime}}</td>
+                <td id="consumed-time-{{i}}">{{task.consumedTime}}</td>
                 <td>
-                    <a class="play-button-tracker "  id={{task.id}} ng-click="countTask(task.id,task.consumedTime)"><i
+                    <a class="play-button-tracker "  id={{task.id}}
+                       ng-click="countTask(task.id,task.consumedTime, i)"><i
                                        class="fa fa-play"
                                                                                                aria-hidden="true"></i></a>
                 </td>

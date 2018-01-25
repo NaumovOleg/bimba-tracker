@@ -19,11 +19,10 @@ angular.module ( 'tray', [
             $scope.tasks =  ipsRenderer.sendSync('project/getTasks',{projectId:id} );
         };
 
-        $scope.countTask =function ( id ,time) {
-            
-            console.log( $scope.tasks );
-           
+        $scope.countTask =function ( id ,time,i) {
+     
            var playButton = document.getElementById( id );
+           var consumedTimeBlock = document.getElementById( `consumed-time-${i}` );
 
             if(!myTasks[id]){
                 myTasks[id] = {active:true,time:0};
@@ -31,21 +30,21 @@ angular.module ( 'tray', [
             };
             if( myTasks[id].active === true ) {
                 myTasks[id].active  = !myTasks[id].active;
-                $scope.count = 0;
                 playButton.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
-                setInterval( function (  ) {
-                  $scope.count=$scope.count+1;
-                },60*1000 );
+                $scope.interval = setInterval( function (  ) {
+                $scope.count=$scope.count+1;
+                $scope.tasks[i].consumedTime = $scope.tasks[i].consumedTime +1;
+                consumedTimeBlock.innerText = $scope.tasks[i].consumedTime
+                
+                },1000 );
+                
             }
             else {
                 playButton.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
                 myTasks[id].active  = !myTasks[id].active;
-                var obj = {
-                    task:id,time:time+$scope.count
-                };
-                ipsRenderer.sendSync('task/setTime',{task:id,time:time+$scope.count} );
+                clearInterval( $scope.interval );
+                ipsRenderer.sendSync('task/setTime',{task:id,time:$scope.tasks[i].consumedTime } );
                 $scope.getTasks (  $scope.currentProjectId ) ;
-
             }
         }
     } ] );
