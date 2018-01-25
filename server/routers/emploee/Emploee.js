@@ -2,11 +2,11 @@
  * author Oleg .
  */
 
-const CompaniesCore = require( '../../core/network/Emploee.js' );
+const EmploeeCore = require( '../../core/network/Emploee.js' );
 
 
 
-var Companies = {
+var Emploee = {
 
     getList: (  event, args ) =>{
         storage.get('bimba-tracker-user',function ( error,data ) {
@@ -17,7 +17,7 @@ var Companies = {
 
                 let emploees = [];
 
-                CompaniesCore.getList( data.id )
+	            EmploeeCore.getList( data.id )
                     .then( function ( response ) {
                         for ( var i = 0; i < response.length; i++ ) {
 
@@ -47,8 +47,11 @@ var Companies = {
 
         })
     },
-
-
+	getMe:( event, args )=>{
+    	storage.get( 'bimba-tracker-emploee', function ( error, response  ) {
+			event.returnValue = response;
+	    })
+	}
 };
 
-module.exports = Companies;
+module.exports = Emploee;

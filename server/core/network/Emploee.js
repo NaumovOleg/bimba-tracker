@@ -18,6 +18,10 @@ const Emploee = {
        });
 
     },
+	
+	getMe:(id)=>{
+    	return EmploeeModel.findById( id );
+	},
 
 
 
