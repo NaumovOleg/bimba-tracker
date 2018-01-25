@@ -2,9 +2,11 @@
 
 'use strict';
 const electron = require('electron');
-var { app, BrowserWindow ,Tray,clipboard,Menu} = require('electron');
-var async = require('async');
-var path = require( 'path' );
+const { app, BrowserWindow ,Tray,clipboard,Menu,desktopCapturer } = require('electron');
+const async = require('async');
+const path = require( 'path' );
+
+console.log( require('electron') );
 
 app.commandLine.appendSwitch( "js-flags", "--harmony-async-await");
 app.commandLine.appendSwitch( "js-flags", "enable-file-cookies");
@@ -34,8 +36,9 @@ app.on('ready', function() {
     global.mainWindow = new BrowserWindow({
         width: 1200,
         height: 900,
+        resizable:false,
         icon: './client/assets/icon.png',
-        // frame:false
+         frame:true
     });
     mainWindow.webContents.openDevTools();
 

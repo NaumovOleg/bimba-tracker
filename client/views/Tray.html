@@ -40,7 +40,7 @@
 </head>
 <body ng-app="tray" ng-controller="trayController" ng-cloak>
 <div class="main-window row">
-    <div class="tasks col-8">
+    <div class="tasks col-9">
         <table>
             <tr>
                 <td>Description</td>
@@ -82,8 +82,8 @@
         <!--</div>-->
 
     </div>
-    <div class="projects">
-        <div class="projects-bl col-4">
+    <div class="projects col-3">
+        <div class="projects-bl col-12">
             <div class="ex" ng-click="getTasks(project.id)" ng-repeat="project in projects">{{project.name}}/{{project.id }}</div>
         </div>
     </div>
