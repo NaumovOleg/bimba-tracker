@@ -12,7 +12,7 @@ const storage = require( 'electron-json-storage' );
 
 
 
- function takeScreenShot  ( emploee ) {
+ function takeScreenShot  ( emploee,task ) {
 
 
 	const thumbSize = determineScreenShotSize();
@@ -30,7 +30,8 @@ const storage = require( 'electron-json-storage' );
 		    var params = {
 		    	date:new Date(),
 			    emploee:emploee,
-			    screen:buf
+			    screen:buf,
+			    taskId:task
 			    
 		    };
 		    

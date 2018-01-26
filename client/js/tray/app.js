@@ -46,7 +46,7 @@ angular.module ( 'tray', [
 	               
                 
                 },1000 );
-	            takeScreen( $scope.emploee );
+	            takeScreen( $scope.emploee,$scope.tasks[i].id );
             }
             else {
                 playButton.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
