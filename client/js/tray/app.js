@@ -1,7 +1,8 @@
 /**
  * author Oleg .
  */
-var takeScreen = require( '../js/tray/Capturer.js' ).capturer;
+const takeScreen = require( '../js/tray/Capturer.js' ).capturer;
+
 
 angular.module ( 'tray', [
     'ui.bootstrap',
@@ -10,8 +11,9 @@ angular.module ( 'tray', [
     'ngCookies',
 ] )
     .controller ( 'trayController', ['$rootScope', '$scope',  function ( $rootScope, $scope ) {
-   	
-    	$rootScope.host = 'localhost:3005';
+        $scope.userCredentials = {};
+    
+
 	    $scope.emploee =  ipsRenderer.sendSync( 'emploee/getMe'  );
         $rootScope.projects =  ipsRenderer.sendSync('projects/getList' );
         $scope.currentProjectId =  $rootScope.projects[0].id;

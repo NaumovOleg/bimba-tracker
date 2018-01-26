@@ -6,11 +6,10 @@ const { app, BrowserWindow ,Tray,clipboard,Menu,desktopCapturer } = require('ele
 const async = require('async');
 const path = require( 'path' );
 
-console.log( require('electron') );
-
 app.commandLine.appendSwitch( "js-flags", "--harmony-async-await");
 app.commandLine.appendSwitch( "js-flags", "enable-file-cookies");
 global.storage = require('electron-json-storage');
+global.redisDB = require('./server/db/redis/Connection.js' );
 const Routers = require('./server/routers/Router.js' );
 const ipcMain = electron.ipcMain;
 const netWorkAuth = require('./server/core/network/Auth.js' );
@@ -23,6 +22,7 @@ app.on('window-all-closed', function() {
         app.quit();
     }
 });
+
 
 
 //

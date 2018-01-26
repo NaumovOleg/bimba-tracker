@@ -3,9 +3,9 @@
  */
 
 
-var AuthCore = require('../../core/network/Auth.js');
-
+const AuthCore = require('../../core/network/Auth.js');
 const CompaniesCore = require('../../core/network/Companies.js' );
+const Utils = require( '../../libs/Session.js' );
 
 // function for authentification user to system ( sets uderId and defaul emploee and company to json storage)
 var Login =  {
@@ -16,9 +16,26 @@ var Login =  {
        };
         AuthCore.login( user )
            .then( function ( response  ) {
+               
+               
                if( ! response.error ) {
-                  return  storage.set( 'bimba-tracker-user', {email:response.email, password:user.password,id:response.id}, function ( error ) {
+                  let currentSession = Utils.generateKey();
+                  return  storage.set( 'bimba-tracker-user', {email:response.email, password:user.password,id:response.id, session:currentSession }, function ( error ) {
 
+                      var userData = {
+                                 expiration:     new Date(),
+                                 uid:            response.id,
+                                 firstName:      response.firstname || '',
+                                 lastName:       response.lastname || '' ,
+                                 username:       response.username || '',
+                                 email:          response.email || '',
+                                 status:         response.status,
+                                 userpic:        response.userpic,
+                                 session:        currentSession
+                             };
+                      
+                      redisDB.set( currentSession, JSON.stringify( userData ) );
+                      
                       CompaniesCore.getList( response.id )
                           .then( function ( response  ) {
 
@@ -41,7 +58,6 @@ var Login =  {
                           .catch( function ( error ) {
 
                           })
-
 
                    });
 
